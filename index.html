@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message in a Bottle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Message in a Bottle</h1>
+            <p class="tagline">Send a timeless message to the future</p>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="recipient-email">Recipient's Email</label>
+                    <input type="email" id="recipient-email" placeholder="Enter recipient's email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="delivery-date">Delivery Date</label>
+                    <input type="date" id="delivery-date" required>
+                </div>
+
+                <div class="editor-container">
+                    <div class="themes">
+                        <h3>Choose Your Theme</h3>
+                        <div class="theme-options">
+                            <button class="theme-btn" data-theme="parchment">
+                                <span class="theme-preview parchment">A</span>
+                                <span>Aged Parchment</span>
+                            </button>
+                            <button class="theme-btn" data-theme="ledger">
+                                <span class="theme-preview ledger">A</span>
+                                <span>The Account Ledger</span>
+                            </button>
+                        </div>
+
+                        <div class="bottle-selector">
+                            <h3>Design Your Bottle</h3>
+                            <div class="bottle-options">
+                                <button type="button" class="bottle-btn" data-color="#c0392b" aria-label="Red bottle">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="bottle-btn is-selected" data-color="#3498db" aria-label="Blue bottle">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="bottle-btn" data-color="#9b59b6" aria-label="Purple bottle">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="bottle-btn" data-color="#e67e22" aria-label="Orange bottle">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="bottle-btn" data-color="#16a085" aria-label="Green bottle">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="bottle-btn" data-color="#111111" aria-label="Black bottle">
+                                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-container">
+                        <div class="message-bottle-preview" aria-hidden="true" style="--bottle-color:#3498db;">
+                            <svg class="bottle-icon" viewBox="0 0 64 64">
+                                <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                            </svg>
+                        </div>
+                        <textarea id="message" placeholder="Write your heartfelt message here..." required></textarea>
+                    </div>
+                </div>
+
+                <button id="seal-bottle" class="seal-btn">Seal the Bottle</button>
+
+                <section class="testimonials" aria-label="Testimonials">
+                    <div class="testimonials-header">
+                        <h2>Messages Sealed by Others</h2>
+                        <div class="carousel-controls">
+                            <button type="button" class="carousel-btn" id="testimonials-prev" aria-label="Previous testimonials">‹</button>
+                            <div class="carousel-dots" aria-label="Testimonials pages">
+                                <button type="button" class="carousel-dot is-active" data-index="0" aria-label="Page 1"></button>
+                                <button type="button" class="carousel-dot" data-index="1" aria-label="Page 2"></button>
+                            </div>
+                            <button type="button" class="carousel-btn" id="testimonials-next" aria-label="Next testimonials">›</button>
+                        </div>
+                    </div>
+
+                    <div class="carousel-viewport">
+                        <div class="carousel-track" data-index="0">
+                            <div class="carousel-page" aria-label="Testimonials page 1">
+                                <article class="testimonial-card" style="--bottle-color:#3498db;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“I wrote to my future self on a hard day. Reading it later felt like being cared for by past me.”</p>
+                                </article>
+                                <article class="testimonial-card" style="--bottle-color:#9b59b6;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“I finally said what I never could out loud. Sending it forward made it feel safe.”</p>
+                                </article>
+                                <article class="testimonial-card" style="--bottle-color:#e67e22;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“I sent encouragement to my best friend for a date I knew would be tough. It landed perfectly.”</p>
+                                </article>
+                                <article class="testimonial-card" style="--bottle-color:#16a085;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“It helped me apologize with care. Scheduling it gave me time to get the words right.”</p>
+                                </article>
+                                <article class="testimonial-card" style="--bottle-color:#c0392b;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“I wrote gratitude to my parents. The delay made it feel ceremonial.”</p>
+                                </article>
+                            </div>
+
+                            <div class="carousel-page" aria-label="Testimonials page 2">
+                                <article class="testimonial-card" style="--bottle-color:#1abc9c;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“I scheduled a message for my birthday next year. It kept me going.”</p>
+                                </article>
+                                <article class="testimonial-card" style="--bottle-color:#34495e;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“It felt like putting hope somewhere safe until I was ready to receive it.”</p>
+                                </article>
+                                <article class="testimonial-card" style="--bottle-color:#f1c40f;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“The parchment theme made it feel like a real keepsake letter.”</p>
+                                </article>
+                                <article class="testimonial-card" style="--bottle-color:#7f8c8d;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“I wrote what I wish someone had said to me. Then I sent it to myself.”</p>
+                                </article>
+                                <article class="testimonial-card" style="--bottle-color:#e84393;">
+                                    <svg class="bottle-icon" viewBox="0 0 64 64" aria-hidden="true">
+                                        <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
+                                    </svg>
+                                    <p class="testimonial-text">“Simple, quiet, meaningful. The countdown to delivery was the best part.”</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="sender-email-modal" class="confirmation-modal">
+        <div class="confirmation-content">
+            <h2>Your bottle is sealed! 🍾</h2>
+            <p>To make sure this bottle can be delivered, where should we send the confirmation?</p>
+            <input type="email" id="sender-email" placeholder="Your email address" required>
+            <button id="confirm-send">Confirm & Send</button>
+        </div>
+    </div>
+
+    <div id="confirmation" class="confirmation-modal">
+        <div class="confirmation-content">
+            <h2>Your Message is Sealed!</h2>
+            <p>Your message has been securely stored and will be delivered on the selected date.</p>
+            <button id="close-confirmation">Return to Form</button>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
