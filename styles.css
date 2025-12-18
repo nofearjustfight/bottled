@@ -422,7 +422,7 @@ main {
     box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
-/* Testimonials Section */
+/* Testimonials Section - Themed Restyle */
 .testimonials {
     margin-top: 2rem;
     padding-top: 2rem;
@@ -433,13 +433,22 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.testimonials-header h3 {
+.testimonials-header h2 {
     color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
 }
 
+.testimonials-subheading {
+    color: #666;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+/* Carousel Controls - More Subtle */
 .carousel-controls {
     display: flex;
     align-items: center;
@@ -447,20 +456,22 @@ main {
 }
 
 .carousel-btn {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    border: 1px solid #ddd;
-    background: white;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.8);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
+    color: #999;
+    font-size: 0.8rem;
 }
 
 .carousel-btn:hover {
-    border-color: var(--accent-color);
+    border-color: rgba(52, 152, 219, 0.3);
     color: var(--accent-color);
 }
 
@@ -470,10 +481,10 @@ main {
 }
 
 .carousel-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: #ddd;
+    background: rgba(0,0,0,0.1);
     border: none;
     cursor: pointer;
     transition: background 0.3s;
@@ -499,13 +510,31 @@ main {
     gap: 0.75rem;
 }
 
+/* Testimonial Cards - Paper Texture & Rotation */
 .testimonial-card {
     display: flex;
     gap: 0.75rem;
-    padding: 0.75rem;
-    background: #f9f9f9;
-    border-radius: 6px;
+    padding: 1rem;
+    background: #faf6f1; /* Light cream paper texture */
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
     align-items: flex-start;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+/* Alternating rotation for scattered notes effect */
+.testimonial-card:nth-child(odd) {
+    transform: rotate(-1deg);
+}
+
+.testimonial-card:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.testimonial-card:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .bottle-icon {
@@ -518,10 +547,12 @@ main {
     margin-top: 2px;
 }
 
+/* Handwritten Quote Style */
 .testimonial-text {
     font-size: 0.9rem;
     color: #555;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
 }
 
