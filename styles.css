@@ -94,7 +94,7 @@ header h1 {
 
 .nav-link {
     background: transparent;
-    color: #4a4a4a;
+    color: var(--text-primary);
     border: 1px solid #e8e4e0;
     padding: 0.5rem 1rem;
     border-radius: 4px;
@@ -639,23 +639,10 @@ header {
     text-align: left;
 }
 
-.nav-link {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
 
-.nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.5);
-}
 
 .home-link {
-    color: white;
+    color: var(--text-primary);
     text-decoration: none;
 }
 
