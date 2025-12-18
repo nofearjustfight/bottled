@@ -41,6 +41,7 @@
                                 <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
                             </svg>
                         </div>
+                        <img id="message-image-preview" class="message-image-preview" alt="Attached image" style="display: none;">
                         <textarea id="message" placeholder="Dear future..." required></textarea>
                     </div>
                 </div>
@@ -89,6 +90,24 @@
                                     <path fill="currentColor" d="M26 6h12v6c0 1.2.5 2.3 1.3 3.1l3.2 3.2c1.7 1.7 2.7 4 2.7 6.4V52c0 3.3-2.7 6-6 6H25c-3.3 0-6-2.7-6-6V28.7c0-2.4 1-4.7 2.7-6.4l3.2-3.2c.8-.8 1.3-1.9 1.3-3.1V6z"/>
                                 </svg>
                             </button>
+                        </div>
+
+                        <div class="image-upload-section">
+                            <h4>Add a Personal Image</h4>
+                            <input type="file" id="image-input" accept="image/png, image/jpeg, image/webp" hidden>
+                            <button type="button" id="image-upload-btn" class="image-upload-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                                    <polyline points="21 15 16 10 5 21"/>
+                                </svg>
+                                <span>Choose Image</span>
+                            </button>
+                            <div id="image-thumbnail-container" class="image-thumbnail-container" style="display: none;">
+                                <img id="image-thumbnail" class="image-thumbnail" alt="Selected image preview">
+                                <button type="button" id="remove-image-btn" class="remove-image-btn" aria-label="Remove image">×</button>
+                            </div>
+                            <p class="image-hint">PNG, JPG, or WebP • Max 2MB</p>
                         </div>
                     </div>
                 </div>

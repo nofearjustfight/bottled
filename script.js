@@ -64,6 +64,111 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Image upload functionality
+    const imageInput = document.getElementById('image-input');
+    const imageUploadBtn = document.getElementById('image-upload-btn');
+    const imageThumbnailContainer = document.getElementById('image-thumbnail-container');
+    const imageThumbnail = document.getElementById('image-thumbnail');
+    const removeImageBtn = document.getElementById('remove-image-btn');
+    const messageImagePreview = document.getElementById('message-image-preview');
+    
+    let selectedImageFile = null;
+    const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
+    const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/webp'];
+    
+    // Trigger file input when upload button is clicked
+    if (imageUploadBtn && imageInput) {
+        imageUploadBtn.addEventListener('click', () => {
+            imageInput.click();
+        });
+    }
+    
+    // Handle file selection
+    if (imageInput) {
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            // Validate file type
+            if (!ALLOWED_TYPES.includes(file.type)) {
+                alert('Please select a PNG, JPG, or WebP image.');
+                imageInput.value = '';
+                return;
+            }
+            
+            // Validate file size
+            if (file.size > MAX_FILE_SIZE) {
+                alert('Image must be smaller than 2MB.');
+                imageInput.value = '';
+                return;
+            }
+            
+            // Store the file
+            selectedImageFile = file;
+            
+            // Create preview URL
+            const previewUrl = URL.createObjectURL(file);
+            
+            // Show thumbnail preview
+            if (imageThumbnail && imageThumbnailContainer) {
+                imageThumbnail.src = previewUrl;
+                imageThumbnailContainer.style.display = 'flex';
+            }
+            
+            // Show message area preview
+            if (messageImagePreview) {
+                messageImagePreview.src = previewUrl;
+                messageImagePreview.style.display = 'block';
+            }
+        });
+    }
+    
+    // Remove image functionality
+    if (removeImageBtn) {
+        removeImageBtn.addEventListener('click', () => {
+            clearImageSelection();
+        });
+    }
+    
+    function clearImageSelection() {
+        selectedImageFile = null;
+        if (imageInput) imageInput.value = '';
+        if (imageThumbnailContainer) imageThumbnailContainer.style.display = 'none';
+        if (imageThumbnail) imageThumbnail.src = '';
+        if (messageImagePreview) {
+            messageImagePreview.src = '';
+            messageImagePreview.style.display = 'none';
+        }
+    }
+    
+    // Upload image to Supabase Storage
+    async function uploadImageToSupabase(file) {
+        if (!file) return null;
+        
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+        const filePath = `uploads/${fileName}`;
+        
+        const { data, error } = await supabase.storage
+            .from('bottle-images')
+            .upload(filePath, file, {
+                cacheControl: '3600',
+                upsert: false
+            });
+        
+        if (error) {
+            console.error('Image upload error:', error);
+            throw new Error('Failed to upload image: ' + error.message);
+        }
+        
+        // Get public URL
+        const { data: urlData } = supabase.storage
+            .from('bottle-images')
+            .getPublicUrl(filePath);
+        
+        return urlData.publicUrl;
+    }
+    
     // Theme switching functionality
     themeButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -140,7 +245,24 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Insert into Supabase with sender_email
+        // Upload image if selected
+        let imageUrl = null;
+        if (selectedImageFile) {
+            try {
+                confirmSendButton.disabled = true;
+                confirmSendButton.textContent = 'Uploading...';
+                imageUrl = await uploadImageToSupabase(selectedImageFile);
+            } catch (uploadError) {
+                alert(uploadError.message);
+                confirmSendButton.disabled = false;
+                confirmSendButton.textContent = 'Confirm & Send';
+                return;
+            }
+        }
+        
+        confirmSendButton.textContent = 'Saving...';
+        
+        // Insert into Supabase with sender_email and image_url
         const { data, error } = await supabase
             .from('bottles')
             .insert({
@@ -149,13 +271,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 message: messageInput.value,
                 delivery_date: deliveryDate.value,
                 theme: document.body.classList.contains('theme-parchment') ? 'parchment' : 'ledger',
-                bottle_color: selectedBottleColor
+                bottle_color: selectedBottleColor,
+                image_url: imageUrl
             });
         
         if (error) {
             alert('Error saving message: ' + error.message);
+            confirmSendButton.disabled = false;
+            confirmSendButton.textContent = 'Confirm & Send';
             return;
         }
+        
+        // Reset button state
+        confirmSendButton.disabled = false;
+        confirmSendButton.textContent = 'Confirm & Send';
         
         // Send confirmation email via Edge Function
         try {
@@ -202,6 +331,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (bottleButtons.length) {
             setDefaultBottle();
         }
+        
+        // Reset image selection
+        clearImageSelection();
     });
     
     // Close modal when clicking outside the content
