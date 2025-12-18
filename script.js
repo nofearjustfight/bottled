@@ -147,13 +147,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const fileExt = file.name.split('.').pop();
         const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-        const filePath = `uploads/${fileName}`;
+        const filePath = fileName;
         
         const { data, error } = await supabase.storage
             .from('bottle-images')
             .upload(filePath, file, {
                 cacheControl: '3600',
-                upsert: false
+                upsert: true
             });
         
         if (error) {
