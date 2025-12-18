@@ -265,4 +265,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (themeButtons.length > 0) {
         themeButtons[0].click();
     }
+    
+    // Also set default theme immediately in case click doesn't work
+    document.body.classList.add('theme-parchment');
+    if (themeButtons.length > 0) {
+        themeButtons[0].classList.add('active');
+        messageInput.placeholder = 'My Dearest...';
+    }
 });
